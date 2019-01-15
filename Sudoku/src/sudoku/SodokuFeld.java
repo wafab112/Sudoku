@@ -18,12 +18,14 @@ public class SodokuFeld extends JPanel {
 	
 	private Feld feld;
 	private int arr[][] = new int[9][9];
-	
+	private Font font;
 	private int rand = 50, length = 900;
 	
 	public SodokuFeld(int width, int height) {
 		
 		super();
+		
+		font = new Font("Indie Flower", Font.PLAIN, 72);
 		
 		this.setBackground(Color.LIGHT_GRAY);
 		
@@ -54,7 +56,7 @@ public class SodokuFeld extends JPanel {
 
 		g2d.setColor(Color.blue);
 		
-		g2d.setFont(new Font("Sans Serif", Font.PLAIN, 72));
+		g2d.setFont(font);
 
 		for (int i = 0; i < this.arr.length; i++) {
 
@@ -74,7 +76,7 @@ public class SodokuFeld extends JPanel {
 		
 		
 		
-		g2d.setFont(new Font("Serif", Font.PLAIN, 72));
+		g2d.setFont(new Font("Sans Serif", Font.PLAIN, 72));
 		
 		for (int i = 0; i<feld.preFelder.length;i++) {
 			

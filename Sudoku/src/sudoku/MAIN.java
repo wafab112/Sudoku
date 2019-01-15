@@ -25,16 +25,6 @@ public class MAIN {
 
 				feld.spielFeld.repaint();
 
-				long START = System.currentTimeMillis();
-
-				feld.solve(0, 0);
-
-				long END = System.currentTimeMillis();
-
-				System.out.println("Das Lösen des Sudokus dauerte " + (END - START) + "ms");
-
-				feld.spielFeld.repaint();
-
 			}
 
 		} else {

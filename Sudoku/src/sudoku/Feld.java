@@ -1,8 +1,13 @@
 package sudoku;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 
 import javax.swing.*;
 
@@ -24,6 +29,18 @@ public class Feld extends JFrame {
 	public Feld(String name, int difficulty) {
 		
 		super(name);
+		
+		try {
+		    //create the font to use. Specify the size!
+		    Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("./Resource/IndieFlower.ttf")).deriveFont(12f);
+		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		    //register the font
+		    ge.registerFont(customFont);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch(FontFormatException e) {
+		    e.printStackTrace();
+		}
 		
 		this.setBounds(0,0,1000,1000);
 		

@@ -1,8 +1,13 @@
 package sudoku_slow;
 
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.GraphicsEnvironment;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.io.File;
+import java.io.IOException;
 import java.util.Arrays;
 
 import javax.swing.*;
@@ -28,6 +33,18 @@ public class Feld_Slow extends JFrame {
 		
 		super(name);
 		
+		try {
+		    //create the font to use. Specify the size!
+		    Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("./Resource/IndieFlower.ttf")).deriveFont(12f);
+		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		    //register the font
+		    ge.registerFont(customFont);
+		} catch (IOException e) {
+		    e.printStackTrace();
+		} catch(FontFormatException e) {
+		    e.printStackTrace();
+		}
+		
 		this.setBounds(0,0,1000,1000);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -52,6 +69,31 @@ public class Feld_Slow extends JFrame {
 		
 		this.setVisible(true);
 		
+		addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyPressed(KeyEvent e) {}
+
+			@Override
+			public void keyReleased(KeyEvent e) {}
+
+			@Override
+			public void keyTyped(KeyEvent e) {
+				
+				long START = System.currentTimeMillis();
+				
+				solve(0,0);
+				
+				long END = System.currentTimeMillis();
+				
+				System.out.println("Das Lösen des Sudokus dauerte " + (END - START) + "ms");
+				
+				spielFeld.repaint();
+				
+			}
+			
+		});
+		
 	}
 	
 	public boolean solve(int x, int y) {
@@ -68,7 +110,7 @@ public class Feld_Slow extends JFrame {
 
 							felder[y][x] = i;
 							
-							spielFeld.repaint();
+							spielFeld.paintImmediately(0,0,1000,1000);
 							
 							waitAmount(waitLength);
 							
