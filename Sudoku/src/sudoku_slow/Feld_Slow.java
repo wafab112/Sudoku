@@ -35,8 +35,6 @@ public class Feld_Slow extends JFrame {
 		
 		String path = System.getProperty("user.dir");
 		
-		System.out.println(path);
-		
 		try {
 		    //create the font to use. Specify the size!
 		    Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File(path + "/../Resource/IndieFlower.ttf")).deriveFont(12f);
