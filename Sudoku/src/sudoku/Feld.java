@@ -30,9 +30,13 @@ public class Feld extends JFrame {
 		
 		super(name);
 		
+		String path = System.getProperty("user.dir");
+		
+		System.out.println(path);
+		
 		try {
 		    //create the font to use. Specify the size!
-		    Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File("./Resource/IndieFlower.ttf")).deriveFont(12f);
+		    Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File(path + "/../Resource/IndieFlower.ttf")).deriveFont(12f);
 		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		    //register the font
 		    ge.registerFont(customFont);
