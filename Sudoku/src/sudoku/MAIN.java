@@ -4,7 +4,7 @@ import sudoku_slow.*;
 
 /**
  * 
- * @author Fabian Wagner
+ * @author Fabian Wagner & Kai Seegers
  *
  */
 public class MAIN {

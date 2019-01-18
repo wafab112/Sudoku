@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 /**
  * 
- * @author Fabian Wagner
+ * @author Fabian Wagner & Kai Seegers
  *
  */
 public class SodokuFeld extends JPanel {

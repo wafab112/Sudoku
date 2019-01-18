@@ -16,7 +16,7 @@ import generator.SudokuGenerator;
 
 /**
  * 
- * @author Fabian Wagner
+ * @author Fabian Wagner & Kai Seegers
  *
  */
 public class Feld_Slow extends JFrame {
