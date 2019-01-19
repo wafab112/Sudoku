@@ -24,24 +24,25 @@ public class Feld extends JFrame {
 	
 	protected int[][] preFelder = new int[9][9];
 	
+	protected long waitLength = 10;
+	
 	protected SodokuFeld spielFeld;
 	
-	public Feld(String name, int difficulty) {
+	public Feld(String name, int difficulty, boolean fast) {
 		
 		super(name);
 		
-		String path = System.getProperty("user.dir");
+		Font customFont = this.setFont();
 		
 		try {
-		    //create the font to use. Specify the size!
-		    Font customFont = Font.createFont(Font.TRUETYPE_FONT, new File(path + "/../Resource/IndieFlower.ttf")).deriveFont(12f);
-		    GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-		    //register the font
-		    ge.registerFont(customFont);
-		} catch (IOException e) {
-		    e.printStackTrace();
-		} catch(FontFormatException e) {
-		    e.printStackTrace();
+			
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			ge.registerFont(customFont);
+			
+		} catch (NullPointerException e) {
+			
+			e.printStackTrace();
+			
 		}
 		
 		this.setBounds(0,0,1000,1000);
@@ -81,7 +82,7 @@ public class Feld extends JFrame {
 				
 				long START = System.currentTimeMillis();
 				
-				solve(0,0);
+				solve(0,0,fast);
 				
 				long END = System.currentTimeMillis();
 				
@@ -95,7 +96,7 @@ public class Feld extends JFrame {
 		
 	}
 	
-	protected boolean solve(int x, int y) {
+	protected boolean solve(int x, int y, boolean fast) {
 		
 		if (x<9) {
 			
@@ -109,11 +110,15 @@ public class Feld extends JFrame {
 
 							felder[y][x] = i;
 							
-							spielFeld.repaint();
+							if (!fast) {
 							
-							//waitAmount(waitLength);
+								waitAmount(waitLength);
+								
+								spielFeld.paintImmediately(0,0,1000,1000);
+								
+							}
 							
-							if (solve(x, y+1)) return true;
+							if (solve(x, y+1, fast)) return true;
 
 						} 
 
@@ -145,7 +150,7 @@ public class Feld extends JFrame {
 				
 				} else {
 					
-					solve(x,y+1);
+					solve(x,y+1, fast);
 					
 				}
 			
@@ -154,7 +159,7 @@ public class Feld extends JFrame {
 				x++;
 				y = 0;
 				
-				solve(x,y);
+				solve(x,y, fast);
 				
 			}
 		
@@ -162,6 +167,63 @@ public class Feld extends JFrame {
 		
 		return false;
 		
+	}
+	
+	private Font setFont() {
+		
+		Font font = null;
+		
+		String path = System.getProperty("user.dir");
+		
+		try {
+			
+		    font = Font.createFont(Font.TRUETYPE_FONT, new File(path + "/../Resource/IndieFlower.ttf")).deriveFont(12f);
+		    
+		} catch (IOException e) {
+			
+		    //e.printStackTrace();
+		    
+		} catch(FontFormatException e) {
+			
+		    e.printStackTrace();
+		    
+		}
+		
+		
+		try {
+			
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("./Resource/IndieFlower.ttf")).deriveFont(12f);
+			
+		} catch (IOException e) {
+			
+		    //e.printStackTrace();
+		    
+		} catch(FontFormatException e) {
+			
+		    e.printStackTrace();
+		    
+		}
+		
+		return font;
+		
+	}
+	
+	private void waitAmount(long millis) {
+
+		try {
+
+			synchronized (this) {
+
+				this.wait(millis);
+
+			}
+
+		} catch (InterruptedException e) {
+
+			e.printStackTrace();
+
+		}
+
 	}
 	
 	private boolean checkNumber(int x, int y, int number) {
