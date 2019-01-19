@@ -1,1 +1,0 @@
-java -jar BackTracking.jar fast
