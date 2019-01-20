@@ -33,13 +33,27 @@ public class MAIN {
 
 					feld.spielFeld.repaint();
 
-				} else if (args[1].equals("slow")) {
+				} else if (args[1].contains("slow=")) {
+					
+					String nbr = args[1].replace("slow=", "");
+					
+					//System.out.println(nbr);
+					
+					int waitLength = Integer.parseInt(nbr);
 
 					Feld feld = new Feld("Sudoku", length, false);
+					
+					feld.waitLength = waitLength;
 
 					feld.spielFeld.repaint();
 
-				} else {
+				} else if (args[1].equals("slow")) {
+					
+					Feld feld = new Feld("Sudoku", length, false);
+					
+					feld.spielFeld.repaint();
+					
+				}else {
 					
 					System.out.println("Second Statement not working. Has to bei either \"slow\" or \"fast\".");
 					
@@ -53,12 +67,26 @@ public class MAIN {
 
 					feld.spielFeld.repaint();
 
-				} else if (args[0].equals("slow")) {
+				} else if (args[0].contains("slow=")) {
+					
+					String nbr = args[1].replace("slow=", "");
+					
+					//System.out.println(nbr);
+					
+					int waitLength = Integer.parseInt(nbr);
 
 					Feld feld = new Feld("Sudoku", 50, false);
+					
+					feld.waitLength = waitLength;
 
 					feld.spielFeld.repaint();
 
+				} else if (args[0].equals("slow")) {
+					
+					Feld feld = new Feld("Sudoku", 50, false);
+					
+					feld.spielFeld.repaint();
+					
 				} else {
 					
 					//manual
