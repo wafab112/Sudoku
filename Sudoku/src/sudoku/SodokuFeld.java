@@ -86,7 +86,7 @@ public class SodokuFeld extends JPanel {
 					
 					g2d.setColor(Color.white);
 					
-					g2d.fillRect(rand+j*100+5, rand+i*100+5, 90, 90);
+					g2d.fillRect(j*100+5, i*100+5, 90, 90);
 					
 					g2d.setColor(Color.black);
 					
@@ -106,46 +106,46 @@ public class SodokuFeld extends JPanel {
 		
 		Color temp = g2d.getColor();
 		g2d.setColor(Color.white);
-		g2d.fillRect(rand, rand, length, length);
+		g2d.fillRect(0, 0, length, length);
 		g2d.setColor(temp);
 		
-		g2d.setStroke(new BasicStroke(10.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER));
-		
-		g2d.drawLine(rand, rand, length+rand, rand);
-		g2d.drawLine(rand, rand, rand, 950);
-		g2d.drawLine(length+rand, length+rand, length+rand, rand);
-		g2d.drawLine(length+rand, length+rand, rand, length+rand);
+//		g2d.setStroke(new BasicStroke(10.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER));
+//		
+//		g2d.drawLine(0, 0, length, 0);
+//		g2d.drawLine(0, 0, 0, length);
+//		g2d.drawLine(length, length, length, 0);
+//		g2d.drawLine(length, length, 0, length);
 		
 		g2d.setStroke(new BasicStroke(5.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER));
 		
-		g2d.drawLine(length*1/3+rand, rand, length*1/3+rand, length+rand);
-		g2d.drawLine(length*2/3+rand, rand, length*2/3+rand, length+rand);
+		g2d.drawLine(length*1/3, 0, length*1/3, length);
+		g2d.drawLine(length*2/3, 0, length*2/3, length);
 		
-		g2d.drawLine(rand, length*1/3+rand, length+rand, length*1/3+rand);
-		g2d.drawLine(rand, length*2/3+rand, length+rand, length*2/3+rand);
+		g2d.drawLine(0, length*1/3, length, length*1/3);
+		g2d.drawLine(0, length*2/3, length, length*2/3);
 		
 		g2d.setStroke(new BasicStroke(1.0f, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER));
 		
-		g2d.drawLine(length*1/9+rand, rand, length*1/9+rand, length+rand);
-		g2d.drawLine(length*2/9+rand, rand, length*2/9+rand, length+rand);
-		g2d.drawLine(length*4/9+rand, rand, length*4/9+rand, length+rand);
-		g2d.drawLine(length*5/9+rand, rand, length*5/9+rand, length+rand);
-		g2d.drawLine(length*7/9+rand, rand, length*7/9+rand, length+rand);
-		g2d.drawLine(length*8/9+rand, rand, length*8/9+rand, length+rand);
+		g2d.drawLine(length*1/9, 0, length*1/9, length);
+		g2d.drawLine(length*2/9, 0, length*2/9, length);
+		g2d.drawLine(length*4/9, 0, length*4/9, length);
+		g2d.drawLine(length*5/9, 0, length*5/9, length);
+		g2d.drawLine(length*7/9, 0, length*7/9, length);
+		g2d.drawLine(length*8/9, 0, length*8/9, length);
 		
-		g2d.drawLine(rand, length*1/9+rand, length+rand, length*1/9+rand);
-		g2d.drawLine(rand, length*2/9+rand, length+rand, length*2/9+rand);
-		g2d.drawLine(rand, length*4/9+rand, length+rand, length*4/9+rand);
-		g2d.drawLine(rand, length*5/9+rand, length+rand, length*5/9+rand);
-		g2d.drawLine(rand, length*7/9+rand, length+rand, length*7/9+rand);
-		g2d.drawLine(rand, length*8/9+rand, length+rand, length*8/9+rand);
+		g2d.drawLine(0, length*1/9, length, length*1/9);
+		g2d.drawLine(0, length*2/9, length, length*2/9);
+		g2d.drawLine(0, length*4/9, length, length*4/9);
+		g2d.drawLine(0, length*5/9, length, length*5/9);
+		g2d.drawLine(0, length*7/9, length, length*7/9);
+		g2d.drawLine(0, length*8/9, length, length*8/9);
 		
 	}
 	
 	private void drawNumber (int y, int x, int number, Graphics g) {
 		
-		int xValue = 50+x*100-72;
-		int yValue = 50+y*100-24;
+		int xValue = x*100-72;
+		int yValue = y*100-24;
 		
 		g.drawString(Integer.toString(number), xValue, yValue);
 		

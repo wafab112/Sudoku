@@ -45,7 +45,7 @@ public class Feld extends JFrame {
 			
 		}
 		
-		this.setBounds(0,0,1000,1000);
+		this.setBounds(0,0,910,940);
 		
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE);
 		
@@ -61,7 +61,7 @@ public class Feld extends JFrame {
 			
 		}
 		
-		spielFeld = new SodokuFeld(1000,1000);
+		spielFeld = new SodokuFeld(910,940);
 		
 		this.add(spielFeld);
 		
