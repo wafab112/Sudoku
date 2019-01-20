@@ -179,6 +179,8 @@ public class Feld extends JFrame {
 			
 		    font = Font.createFont(Font.TRUETYPE_FONT, new File(path + "/Resource/IndieFlower.ttf")).deriveFont(12f);
 		    
+		    System.out.println(path + "/Resource/IndieFlower.ttf");
+		    
 		} catch (IOException e) {
 			
 		    //e.printStackTrace();
